@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>語彙リスト</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Main -->
+    <main class="container">
+        <hgroup>
+            <h1>語彙リスト</h1>
+        </hgroup>
+
+        <!-- Form elements-->
+        <section id="form">
+            <form>
+                <h2>Input</h2>
+
+                <fieldset>
+                    <legend><strong>Import you data.</strong> Copy and Paste your data here (from Word, Excel, Google
+                        Docs, etc.)</legend>
+                    <textarea name="vocabsrc" placeholder="" aria-label="vocabulary source" required></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend><strong>Data fields</strong></legend>
+                    <select id="included-data" name="included-data" required>
+                        <option value="1" selected>Word</option>
+                        <option value="2" selected>Word Reading</option>
+                        <option value="3">Word Reading Meaning</option>
+                        <option value="4">Word Reading Meaning Other</option>
+                    </select>
+                </fieldset>
+
+                <div class="grid">
+                    <!-- Checkboxes -->
+                    <fieldset>
+                        <legend><strong>Between columns</strong></legend>
+                        <label for="colsep-1">
+                            <input type="radio" id="colsep-1" name="colsep" value="\t" checked>
+                            Tab
+                        </label>
+                        <label for="colsep-2">
+                            <input type="radio" id="colsep-2" name="colsep" value=",">
+                            Comma
+                        </label>
+                        <label for="colsep-3" class="hide">
+                            <input type="radio" id="colsep-3" name="colsep" value="0">
+                            <input type="text" name="custom-col-text" placeholder="Custom" aria-label="Custom">
+                        </label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><strong>Between lines</strong></legend>
+                        <label for="rowsep-1">
+                            <input type="radio" id="rowsep-1" name="rowsep" value="\n" checked>
+                            New line
+                        </label>
+                        <label for="rowsep-2">
+                            <input type="radio" id="rowsep-2" name="rowsep" value=";">
+                            Semicolon
+                        </label>
+                        <label for="rowsep-3" class="hide">
+                            <input type="radio" id="rowsep-3" name="rowsep" value="0">
+                            <input type="text" id="custom-rowsep-text" placeholder="Custom" aria-label="Custom">
+                        </label>
+                    </fieldset>
+                </div>
+
+                <!--  -->
+                <h3>PDF setup</h3>
+
+                <div class="grid">
+                    <fieldset>
+                        <legend><strong>Visible column</strong></legend>
+                        <select id="visiblecol" name="visiblecol" required>
+                            <option value="1" selected>Word</option>
+                            <option value="2">Reading</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><strong>Show word in</strong></legend>
+                        <select id="wordsite" name="wordsite" required>
+                            <option value="jisho" selected>jisho.org</option>
+                            <option value="rtkidx">rtkidx</option>
+                        </select>
+                    </fieldset>
+                </div>
+
+                <div>
+                    <fieldset>
+                        <label>
+                            <input id="show-all" name="show-all" type="checkbox" role="switch" />
+                            Show hidden columns
+                        </label>
+                    </fieldset>
+                </div>
+
+                <div>
+                    <button id="generate-pdf" type="button">Generate PDF</button>
+                    <button id="generate" type="button" class="secondary">Preview</button>
+                </div>
+
+            </form>
+        </section>
+        <!-- ./ Form elements-->
+
+        <section>
+            <h2 id="preview-title" class="hide">Preview</h2>
+            <div id="results"></div>
+        </section>
+
+        <script src="https://unpkg.com/pdf-lib"></script>
+        <script src="https://unpkg.com/@pdf-lib/fontkit"></script>
+        <script type="module" src="scripts/index.js"></script>
+    </main>
+</body>
+
+</html>

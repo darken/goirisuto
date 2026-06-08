@@ -1,0 +1,21 @@
+.result-item {
+    font-size: 1.25em;
+}
+
+.result-item .word {
+    display: inline-block;
+}
+
+.result-item .word a {
+    font-size: 1.5em;
+    margin-right: 0.15em;
+}
+
+.detail {
+    display: inline-block;
+    margin-right: 0.65em;
+}
+
+.hide {
+    display: none;
+}
